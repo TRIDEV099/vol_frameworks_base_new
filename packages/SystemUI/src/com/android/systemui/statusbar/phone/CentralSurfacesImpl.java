@@ -131,6 +131,7 @@ import com.android.systemui.dagger.qualifiers.UiBackground;
 import com.android.systemui.demomode.DemoMode;
 import com.android.systemui.demomode.DemoModeController;
 import com.android.systemui.display.dagger.SystemUIDisplaySubcomponent;
+import com.android.systemui.edgelight.EdgeLightViewController;
 import com.android.systemui.emergency.EmergencyGesture;
 import com.android.systemui.emergency.EmergencyGestureModule.EmergencyGestureIntentFactory;
 import com.android.systemui.flags.FeatureFlags;
@@ -480,6 +481,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
     private final ActivityStarter mActivityStarter;
     private final MediaViewController mMediaViewController;
     private final PulseViewController mPulseViewController;
+    private final EdgeLightViewController mEdgeLightViewController;
 
     private GameSpaceManager mGameSpaceManager;
 
@@ -751,6 +753,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
             WindowManagerProvider windowManagerProvider,
             MediaViewController mediaViewController,
             PulseViewController pulseViewController,
+            EdgeLightViewController edgeLightViewController,
             BurnInProtectionController burnInProtectionController
     ) {
         mContext = context;
@@ -901,6 +904,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
         mWindowManagerProvider = windowManagerProvider;
         mMediaViewController = mediaViewController;
         mPulseViewController = pulseViewController;
+        mEdgeLightViewController = edgeLightViewController;
     }
 
     private void initBubbles(Bubbles bubbles) {
@@ -1141,6 +1145,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
                 )));
         getNotifContainerParentView().addView(mMediaViewController.getMediaArtScrim(), 0);
         getNotifContainerParentView().addView(mPulseViewController.getPulseView(), 1);
+        getNotifContainerParentView().addView(mEdgeLightViewController.getEdgeLightView(), 2);
     }
 
     private ViewGroup getNotifContainerParentView() {
