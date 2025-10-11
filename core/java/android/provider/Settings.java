@@ -7325,6 +7325,12 @@ public final class Settings {
         public static final String EDGE_LIGHT_CUSTOM_COLOR = "edge_light_custom_color";
 
         /**
+         * Pulse count for edge light
+         * @hide
+         */
+        public static final String EDGE_LIGHT_PULSE_COUNT = "edge_light_pulse_count";
+
+        /**
          * Whether or not to vibrate when a touchscreen gesture is detected
          * @hide
          */
